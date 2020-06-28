@@ -1,0 +1,5 @@
+<mat-list-item>
+  <mat-checkbox [checked]="todo.isCompleted" (change)="onUpdate($event)"></mat-checkbox>
+  <span>{{todo.text}}</span>
+</mat-list-item>
+

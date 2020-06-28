@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-header>{{category.title}}</mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <mat-list>
+      <app-todo *ngFor="let todo of category.todos" [todo]="todo" [categoryId]="category.id"></app-todo>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
