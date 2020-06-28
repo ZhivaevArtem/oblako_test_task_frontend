@@ -1,5 +1,9 @@
-.navbar {
-  background-color: #3aafda;
-  color: #ffffff;
+mat-toolbar {
+  button {
+    position: absolute;
+    right: 0;
+    font-size: 3rem;
+    background: none;
+  }
 }
 

@@ -29,7 +29,9 @@ public console = console;
   }
 
   private patch(isCompleted: boolean) {
-    this.todoService.patch(this.categoryId, this.todoId, isCompleted).subscribe();
+    this.todoService.patch(this.categoryId, this.todoId, isCompleted).subscribe(res => {
+      this.todo.isCompleted = isCompleted;
+    });
   }
 }
 

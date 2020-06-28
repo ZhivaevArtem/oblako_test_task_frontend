@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { InCreateModeService } from './service/in-create-mode.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,21 @@ import { FormControl } from '@angular/forms';
 export class AppComponent implements OnInit {
   title = 'rails-frontend';
 
+  public createNewTaskMode: boolean = false;
+
+  constructor(
+    public inCreateModeService: InCreateModeService
+  ) {}
+
   ngOnInit() {
   }
 
-  public onClick() {
-    console.log('clicked');
+  public exitCreateMode() {
+    this.inCreateModeService.value = false;
+  }
+
+  public enterCreateMode() {
+    this.inCreateModeService.value = true;
   }
 }
 

@@ -1,13 +1,13 @@
-<app-new-task-editor></app-new-task-editor>
+<app-new-task-editor *ngIf="inCreateModeService.value"></app-new-task-editor>
 
 <mat-toolbar color="primary">
   <div style="position: relative; width: 100%; display: flex;">
-    <span style="margin: auto;">Задачи</span>
-    <button (click)="onClick()" style="position: absolute; right: 0; background: none; border: none; color: #fff;">+</button>
+    <h1 style="margin: auto; font-size: 1.6rem;">Задачи</h1>
+    <button (click)="enterCreateMode()" mat-flat-button color="primary">+</button>
   </div>
 </mat-toolbar>
 
-<div style="margin: 40px; margin-bottom: 0;">
+<div style="margin: 40px 40px 0 25px;">
   <app-category-list></app-category-list>
 </div>
 

@@ -1,6 +1,8 @@
-<mat-list-item>
+<mat-list-item style="height: auto;">
   <mat-checkbox color="primary" [checked]="todo.isCompleted" (change)="onUpdate($event)">
-    {{todo.text}}
+    <span class="todo-text" [ngStyle]="{'text-decoration': todo.isCompleted ? 'line-through' : 'none'}">
+      {{todo.text}}
+    </span>
   </mat-checkbox>
 </mat-list-item>
 
