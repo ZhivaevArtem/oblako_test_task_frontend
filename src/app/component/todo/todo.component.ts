@@ -29,7 +29,7 @@ public console = console;
   }
 
   private patch(isCompleted: boolean) {
-    this.todoService.patch(this.categoryId, this.todoId, isCompleted);
+    this.todoService.patch(this.categoryId, this.todoId, isCompleted).subscribe();
   }
 }
 

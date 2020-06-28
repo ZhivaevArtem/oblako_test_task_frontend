@@ -1,5 +1,6 @@
 <mat-list-item>
-  <mat-checkbox [checked]="todo.isCompleted" (change)="onUpdate($event)"></mat-checkbox>
-  <span>{{todo.text}}</span>
+  <mat-checkbox color="primary" [checked]="todo.isCompleted" (change)="onUpdate($event)">
+    {{todo.text}}
+  </mat-checkbox>
 </mat-list-item>
 
