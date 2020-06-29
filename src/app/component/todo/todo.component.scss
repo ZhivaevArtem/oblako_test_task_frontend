@@ -1,9 +1,13 @@
 mat-list-item {
+  height: auto;
   margin-top: 15px;
   margin-bottom: 15px;
 
   span.todo-text {
     white-space: normal;
+
+    &.completed {
+      text-decoration: line-through;
+    }
   }
 }
-

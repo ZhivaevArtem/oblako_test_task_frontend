@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,19 +16,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { CategoryComponent } from './component/category/category.component';
-import { CategoryListComponent } from './component/category-list/category-list.component';
-import { TodoComponent } from './component/todo/todo.component';
-import { NewTaskEditorComponent } from './component/new-task-editor/new-task-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoComponent } from './component/todo/todo.component';
+import { ProjectComponent } from './component/project/project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
-    CategoryListComponent,
     TodoComponent,
-    NewTaskEditorComponent
+    ProjectComponent
   ],
   imports: [
     HttpClientModule,

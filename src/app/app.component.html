@@ -1,13 +1,38 @@
-<app-new-task-editor *ngIf="inCreateModeService.value"></app-new-task-editor>
+<div *ngIf="editMode" class="todo-editor-wrapper">
+  <mat-card>
+    <mat-card-header>Новая задача</mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <div [formGroup]="newTodoEditorGroup">
+      <mat-form-field>
+        <input formControlName="todo" type="text" matInput placeholder="Название задачи">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="project" type="text" matInput [matAutocomplete]="auto" placeholder="Категория">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option.title">
+            {{option.title}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <button (click)="submit()" mat-flat-button color="primary">Ок</button>
+    <button (click)="leaveNewTodoEditor()" mat-flat-button>Отмена</button>
+
+  </mat-card>
+</div>
 
 <mat-toolbar color="primary">
-  <div style="position: relative; width: 100%; display: flex;">
-    <h1 style="margin: auto; font-size: 1.6rem;">Задачи</h1>
-    <button (click)="enterCreateMode()" mat-flat-button color="primary">+</button>
+  <div class="toolbar">
+    <h1>Задачи</h1>
+    <button (click)="enterNewTodoEditor()" mat-flat-button color="primary">+</button>
   </div>
 </mat-toolbar>
 
-<div style="margin: 40px 40px 0 25px;">
-  <app-category-list></app-category-list>
+<div class="projects-wrapper">
+  <app-project *ngFor="let project of projects; trackBy: trackBy" [project]="project">
+  </app-project>
 </div>
-

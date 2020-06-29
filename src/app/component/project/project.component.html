@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-header>{{project.title}}</mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <mat-list>
+      <app-todo-row *ngFor="let todo of project.todos; trackBy: trackBy" [todo]="todo"></app-todo-row>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
