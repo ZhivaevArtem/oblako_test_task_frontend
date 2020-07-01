@@ -20,7 +20,7 @@ export class TodoComponent implements OnInit {
   }
 
   public checkboxUpdate(isCompleted: boolean): void {
-    this.todoService.patchTodo(this.todo.project_id, this.todo.id, isCompleted)
+    this.todoService.patchTodo(this.todo.id, isCompleted)
       .subscribe(response => this.todo.is_completed = response.is_completed);
   }
 }

@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
       .subscribe(projects => this.projects = projects.map(proj => plainToClass(Project, proj)));
     this.newTodoEditorGroup = this.formBuilder.group({
       todo: this.formBuilder.control('',
-        [Validators.required, Validators.minLength(1), Validators.maxLength(140)]),
+        [Validators.required, Validators.maxLength(140)]),
       project: this.formBuilder.control('',
-        [Validators.required, Validators.minLength(1), Validators.maxLength(40)])
+        [Validators.required, Validators.maxLength(40)])
     });
     this.newTodoEditorGroup.get('project').valueChanges.subscribe(newValue => {
       this.filterOptions(newValue);
@@ -47,7 +47,8 @@ export class AppComponent implements OnInit {
   }
 
   public submit(): void {
-    if (!this.newTodoEditorGroup.valid) {
+    if (this.newTodoEditorGroup.invalid) {
+      this.newTodoEditorGroup.markAllAsTouched();
       return;
     }
     const todoText = this.newTodoEditorGroup.get('todo').value;
@@ -70,6 +71,26 @@ export class AppComponent implements OnInit {
   private filterOptions(substr: string): void {
     const s = substr ? substr.toLowerCase() : '';
     this.options = this.projects.filter(project => project.title.toLowerCase().includes(s));
+  }
+
+  public getProjectErrorMessage(): string {
+    if (this.newTodoEditorGroup.get('project').hasError('required')) {
+      return 'Поле не может быть пустым';
+    }
+    if (this.newTodoEditorGroup.get('project').hasError('maxlength')) {
+      return 'Максимальная длина - 40 символов';
+    }
+    return 'Invalid Input';
+  }
+
+  public getTodoErrorMessage(): string {
+    if (this.newTodoEditorGroup.get('todo').hasError('maxlength')) {
+      return 'Максимальная длина - 140 символов';
+    }
+    if (this.newTodoEditorGroup.get('todo').hasError('required')) {
+      return 'Поле не может быть пустым';
+    }
+    return 'Invalid Input';
   }
 }
 

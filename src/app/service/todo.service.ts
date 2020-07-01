@@ -14,8 +14,8 @@ export class TodoService {
     private httpClient: HttpClient
   ) { }
 
-  public patchTodo(projectId: number, todoId: number, isCompleted: boolean): Observable<Todo> {
-    return this.httpClient.patch<Todo>(`${environment.restUrl}/projects/${projectId}/todos/${todoId}`,
+  public patchTodo(todoId: number, isCompleted: boolean): Observable<Todo> {
+    return this.httpClient.patch<Todo>(`${environment.restUrl}/todo/${todoId}`,
       {is_completed: isCompleted});
   }
 

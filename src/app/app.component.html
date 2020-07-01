@@ -4,15 +4,17 @@
 
     <mat-divider></mat-divider>
 
-    <div [formGroup]="newTodoEditorGroup">
+    <div class="input-fields" [formGroup]="newTodoEditorGroup">
       <mat-form-field>
         <input formControlName="todo" type="text" matInput placeholder="Название задачи">
+        <mat-error *ngIf="newTodoEditorGroup.get('todo').invalid">{{getTodoErrorMessage()}}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input formControlName="project" type="text" matInput [matAutocomplete]="auto" placeholder="Категория">
+        <mat-error *ngIf="newTodoEditorGroup.get('project').invalid">{{getProjectErrorMessage()}}</mat-error>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option.title">
+          <mat-option *ngFor="let option of options; trackBy: trackBy" [value]="option.title">
             {{option.title}}
           </mat-option>
         </mat-autocomplete>
